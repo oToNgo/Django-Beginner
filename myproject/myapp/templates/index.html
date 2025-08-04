@@ -6,12 +6,20 @@
     <title>หน้าแรกของเว็ปไซด์</title>
 </head>
 <body>
-    <h1>Channarong</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ut nesciunt nisi aperiam et, reprehenderit tenetur rerum sint repellendus ipsam!
-    </p>
-        <hr>
+    <h1>สวัสดี , {{name}}</h1>
+    <h2>ปีนี้คุณมีอายุ {{age}}</h2>
+    <hr>
     <a href="/">หน้าแรกของเว็ปไซด์</a>
     <a href="/form">แบบฟร์อม</a>
     <a href="/about">เกี่ยวกับเรา</a>
 </body>
 </html>
+
+{% comment %} 
+Django Template Language
+
+{{variable}} คือการแทรกตัวแปรลงไปในส่วนที่ต้องการ ในหน้าเว็ปเพจ
+{% tag %} คือการแทรก tag หรือโครงสร้างควบคุมไปในหน้าเว็บ
+{{ variable | fitller }} คือการแทรกตัวกรองข้อมูลในตัวแปร
+
+{% endcomment %}
