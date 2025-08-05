@@ -3,9 +3,9 @@ from django.http import HttpResponse
 
 # การเขียนฟังก์ชั่ง เพิ่มสำหรับการเรียกใช้งาน
 def index(request):
-    name = "Channarong"
-    age = 38
-    return render(request,"index.html",{"name":name,"age":age}) 
+    fname = "Channarong"
+    age = 40
+    return render(request,"index.html",{"fname":fname,"age":age}) 
 
 def about(request):
     return render(request,"about.html")

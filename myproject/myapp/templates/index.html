@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block title %}
     <title>หน้าแรกของเว็ปไซด์</title>
-</head>
-<body>
-    <h1>สวัสดี , {{name}}</h1>
-    <h2>ปีนี้คุณมีอายุ {{age}}</h2>
-    <hr>
-    <a href="/">หน้าแรกของเว็ปไซด์</a>
-    <a href="/form">แบบฟร์อม</a>
-    <a href="/about">เกี่ยวกับเรา</a>
-</body>
-</html>
+{% endblock  %}
+{% block content %}
+{% comment %}  | เป็นการใส่ filter ลงใน HTML{% endcomment %}
+<h1>สวัสดี , {{fname | upper}}</h1>
+<h2>ปีนี้คุณมีอายุ {{age}}</h2>
+{% comment %} tag เป็นการเขียน code ในภาษาของ python โดย ตรง {% endcomment %}
+{% if age >= 30 %} 
+    <h3>คุณเป็นวัยผู้ใหญ่</h3>
+    {% else %}
+    <h3>คุณเป็นรุ่น</h3>
+{% endif %}
+{% endblock  %}
 
 {% comment %} 
 Django Template Language
