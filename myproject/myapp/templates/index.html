@@ -3,22 +3,51 @@
     <title>หน้าแรกของเว็ปไซด์</title>
 {% endblock  %}
 {% block content %}
-{% comment %}  | เป็นการใส่ filter ลงใน HTML{% endcomment %}
-<h1>สวัสดี , {{fname | upper}}</h1>
-<h2>ปีนี้คุณมีอายุ {{age}}</h2>
-{% comment %} tag เป็นการเขียน code ในภาษาของ python โดย ตรง {% endcomment %}
-{% if age >= 30 %} 
-    <h3>คุณเป็นวัยผู้ใหญ่</h3>
-    {% else %}
-    <h3>คุณเป็นรุ่น</h3>
-{% endif %}
+    <h2 class="text-center">ข้อมูลประชากร</h2>
+    {% if messages %}
+      {% for message in messages  %}
+      <div class="alert alert-success text-center" role="alert">
+        {{message}}
+      </div>
+      {% endfor %}
+    {% endif %}
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">รหัสประชากร</th>
+      <th scope="col">ชื่อประชากร</th>
+      <th scope="col">อายุ</th>
+      <th scope="col">วันที่เพิ่มข้อมูล</th>
+      <th scope="col">แก้ไข</th>
+      <th scope="col">ลบ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for person in all_person  %}
+    <tr>
+          <th scope="row">{{person.id}}</th>
+         <td>{{person.name}}</td>
+          <td>{{person.age}}</td>
+          <td>{{person.date}}</td>
+          <td><a href="edit/{{person.id}}" class="btn btn-warning">แก้ไข</td>
+          <td><a href="delete/{{person.id}}" class="btn btn-danger" onclick="return confirm ('คุณต้องการลบ {{person.name}} หรือไม่')">ลบ</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock  %}
 
 {% comment %} 
-Django Template Language
+ | เป็นการใส่ filter ลงใน HTML
+<h1>สวัสดี , {{fname | upper}}</h1>
+<h2>ปีนี้คุณมีอายุ {{age}}</h2>
+{% comment %} tag เป็นการเขียน code ในภาษาของ python โดย ตรง {% endcomment %}
+{% comment %} {% if age >= 30 %} 
+    <h3>คุณเป็นวัยผู้ใหญ่</h3>
+    {% else %}
+    <h3>คุณเป็นรุ่น</h3> {% endcomment %}
+{% comment %} Django Template Language
 
 {{variable}} คือการแทรกตัวแปรลงไปในส่วนที่ต้องการ ในหน้าเว็ปเพจ
 {% tag %} คือการแทรก tag หรือโครงสร้างควบคุมไปในหน้าเว็บ
-{{ variable | fitller }} คือการแทรกตัวกรองข้อมูลในตัวแปร
-
-{% endcomment %}
+{{ variable | fitller }} คือการแทรกตัวกรองข้อมูลในตัวแปร {% endcomment %}
